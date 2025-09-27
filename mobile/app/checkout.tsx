@@ -17,7 +17,7 @@ export default function Checkout() {
         {
           items: items.map((i) => ({ id: i.id, price: i.price, qty: i.qty })),
           total,
-          paymentMethod: "cod",
+          paymentMethod: "online",
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -36,7 +36,7 @@ export default function Checkout() {
 
   return (
      <View style={styles.container}>
-      <Text style={styles.header}>🛒 Checkout</Text>
+      <Text style={styles.header}>Checkout</Text>
 
       <View style={styles.summaryCard}>
         <Text style={styles.label}>Items in Cart:</Text>
@@ -47,7 +47,7 @@ export default function Checkout() {
       </View>
 
       <TouchableOpacity style={styles.button} onPress={placeOrder}>
-        <Text style={styles.buttonText}>Place Order (COD)</Text>
+        <Text style={styles.buttonText}>Place Order (Online)</Text>
       </TouchableOpacity>
     </View>
   );

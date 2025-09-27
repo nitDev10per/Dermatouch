@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const auth = require('./middleware/auth');
 const path = require("path");
 
-const JWT_SECRET = 'replace_this_with_a_strong_secret_in_prod';
+const JWT_SECRET = '1234456789'; 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -53,11 +53,13 @@ app.post('/api/orders', auth(JWT_SECRET), async (req, res) => {
     if (!items || !items.length) return res.status(400).json({ error: 'No items' });
 
     const order = await Order.create({
-      userId: req.user.id,
+      UserId: req.user.id,
       total,
       paymentMethod: paymentMethod || 'cod',
       razorpayOrderId: razorpayOrderId || null
     });
+
+    console.log('order created', order, req.user.id);
 
     for (const it of items) {
       await OrderItem.create({
@@ -79,10 +81,11 @@ app.post('/api/orders', auth(JWT_SECRET), async (req, res) => {
 app.get('/api/orders', auth(JWT_SECRET), async (req, res) => {
   try {
     const orders = await Order.findAll({
-      where: { userId: req.user.id },
+      where: { UserId: req.user.id },
       include: [{ model: OrderItem, include: [Product] }],
       order: [['createdAt', 'DESC']]
     });
+    console.log('orders in', orders, req.user.id);
     res.json(orders);
   } catch (err) {
     console.error(err);
