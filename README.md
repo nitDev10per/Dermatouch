@@ -64,7 +64,7 @@ This will open the Expo Developer Tools in your browser.
 📲 Running the App
 You have two options to run the app:
 
-Option 1: Android Emulator (Recommended)
+ Android Emulator (Recommended)
 Install Android Studio
 
 Setup Android Virtual Device (AVD)
@@ -72,15 +72,6 @@ Setup Android Virtual Device (AVD)
 Run the emulator
 
 In Expo DevTools, click Run on Android Emulator
-
-Option 2: Physical Device
-Make sure your mobile and PC are connected to the same WiFi network
-
-Install Expo Go app from Play Store / App Store
-
-Scan the QR code shown in Expo DevTools
-
-The app will open in your device 🚀
 
 🔑 Default Credentials
 You can log in using the seeded demo account:
